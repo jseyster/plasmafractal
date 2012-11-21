@@ -1,0 +1,67 @@
+<HTML>
+<head><title>Plasma Fractal</title>
+
+<style type="text/css">
+<!--
+	A:link, A:visited { text-decoration: none }
+	A:hover { color: red }
+-->
+</style>
+
+</head>
+<body>
+<table border=0 cellspacing=15>
+<tr><td colspan=2>
+<center>
+<font size=2><p align=right><a href="../">Home</a></p>
+<h2>Plasma Fractal</h2>
+<applet codebase="." code="Plasma.class" width=500 height=500></applet>
+<br>You can download the applet <a href="Plasma.class">here</a>
+<br>You can also view the <a href="source.html">source</a> for this applet</font>
+</center>
+</td></tr>
+<tr><td width=500>
+<h3>The Algorithm</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;The above Java applet draws something known as a <i>plasma fractal</i>.  Clicking the applet will generate a new, random fractal.  Go wild!!!  It will take a few seconds though, so don't click while it's generating the fractal.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;There are two common methods for generating such images.  One of them is known as tie-dye.  Unfortunately, that particular technique went out with the sixties, and I don't know exactly how its done (except for a few details about tying up a shirt and subsequently dying it).
+<br>&nbsp;&nbsp;&nbsp;&nbsp;The second technique is a recursive algorithm known as <i>random midpoint displacement</i>.  I think we can safely say that recursive algorithms will never go out of style!  At the very least, I know a bit more about them than I do about sixties fashion (or any fashion, for that matter).
+<br>&nbsp;&nbsp;&nbsp;&nbsp;The algorithm begins with a rectangular grid that has four points, one at each corner.  These corners are each randomly assigned a color value.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Now, five new points are added to the grid.  One point is added to each edge that has a color value in-between the color value of the two corners connected to the edge (i.e., it is the average value of those two corners).  The fifth point is placed in the center, or midpoint, of the grid.  It is the average of the original four corners.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;This is where the algorithm gets its name.  The <i>midpoint</i> is <i>randomly displaced</i>.  That is to say, some random value is chosen, and the color value is shifted by the value.  The range of possible random numbers is made to be proportional to the size of the square.  A large square may have its midpoint displaced a great deal, and a small square can not have its midpoint displaced by more than a little bit.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;More rigorous implementations of the algorithm actually use fancy applications of Gaussian statistics to set the range of random values.  Unfortunately, I know even less about Gaussian statistics than I know about tie-dye, so I found that fudging it was fine for producing pretty pictures.  If you are interested though, you may want to look for references with more careful descriptions of the algorithm.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;If you were reading carefully, you may have noticed that adding the five extra points divided the original rectangle into four similar rectangles of one fourth the area!  The algorithm is repeated for each of these new squares, yielding a total of sixteen squares!  The process can be repeated recursively as necessary.  In this case, it is repeated until each rectangle is less than the size of a single pixel.  At that point, the recursion ends, and the square is drawn.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;While there is no question that this is an exceedingly cool algorithm (you just can't get enough of those, right?), a great deal of the magic actually has to do with the selection of colors.  In this applet, every color value is a number of type float from zero to one.  What the algorithm does is create a field of smoothly changing color values.  A function converts these color values to colors so that the color values from zero to one flow smoothly between colors, creating the plasma effect.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;Believe it or not, random midpoint displacement is quite useful in some situations.  It's ideal for generating terrains.  Imagine that, instead of a color value, a height value is used instead.  This can create very realistic looking, randomly generated mountains or hills, a technique that is used quite often and with great success in Hollywood.  Also, by carefully mapping certain colors to different color values, useful textures and images can be generated.  I can't claim that I am actually <i>aware</i> of an example of this, but somebody must have done it!
+<br><br><center><img src="images/terrain.png" alt="Fractal generated terrain.  Created with Fractint" width=450 height=231>
+<br><font size=2>This image is an example of terrain generated with random midpoint displacement.  The algorithm was used to select the color values, and those color values were also used as height values.</font>
+</center>
+<br><br><h3>Notes on the Source Code</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;If you are interested in trying to implement this technique yourself, I highly recommend it.  It's a fantastic exercise in recursion, and a sure-fire way to impress women.  Trust me; it can't miss!  I have provided the source code for those who want to look at it for some help or those who just wish to see the specifics of my implementation.
+<br>&nbsp;&nbsp;&nbsp;&nbsp;While one of the rectangular grid-pieces is being divided into four similar rectangles, the color values for its four corners are named <i>c1</i>, <i>c2</i>, <i>c3</i>, and <i>c4</i>.  The variable <i>c1</i> is the color value for the top-left hand corner, and the three other variables proceed clockwise around the rectangle.  The variables <i>Edge1</i>, <i>Edge2</i>, <i>Edge3</i>, and <i>Edge4</i> hold the color values for the four new points that are created on the edges.  <i>Edge1</i> stores the color value for the point created on the top edge, and the other three edge variables also proceed clockwise around the rectangle.  Finally, the variable <i>Middle</i> refers to exactly what you would guess -- the midpoint.  Hopefully those notes will help make the program clearer.  Most other important information should be in the comments.
+<br><h3>References</h3>
+&nbsp;&nbsp;&nbsp;&nbsp;Note that the implementation of the algorithm described here is the result of some tweaking on my part to make it quick to implement (while making the prettiest pictures) and is by no means rigorous.  These sources, which I used, and others may help you understand the technique better.
+<br><br>Hahn, Patrick. (1997). <i>Plasma Fractals</i>. Retrieved January 30, 2002 from <a href="http://www2.vo.lu/homepages/phahn/fractals/plasma.htm">http://www2.vo.lu/homepages/phahn/fractals/plasma.htm</a>.
+<br><br>Marak, Ivo. <i>Random Midpoint Displacement Method</i>. Retrieved January 30, 2002 from <a href="http://www.cg.tuwien.ac.at/studentwork/CESCG97/marak/node3.html">http://www.cg.tuwien.ac.at/studentwork/CESCG97/marak/node3.html</a>
+<br><br><i>Justin Seyster</i> (2002)
+<br>jseyster at cs dot sunysb dot edu
+</td>
+<td width=200 valign="top">
+<br><br><h4>Step 1</h4>
+<img src="images/step1.png" alt="Grid with four points" width=200 height=158>
+<font size=2>Start with a rectangular grid that has four points, each with a color value.</font>
+<br><br><h4>Step 2</h4>
+<img src="images/step2.png" alt="Grid divided by adding five new points" width=200 height=174>
+<font size=2>Create a new point at each of the edges with its color value averaged from the two adjacent corners.  Create a midpoint with its color value averaged from all four corners and randomly "displaced."</font>
+<br><br><h4>Step 3</h4>
+<img src="images/step3.png" alt="Grid now divided into four similar grids" width=200 height=173>
+<font size=2>Rinse. Repeat.</font>
+<br><br><h4>Color Values</h4>
+<img src="images/bwplasma.png" alt="Monochromatic plasma fractal" width=200 height=200>
+<font size=2>This plasma fractal has been colored to show you what <i>color value</i> each pixel was assigned.  All black means a color value of 0.0 and all white is a color value of 1.0</font>
+<br><br><img src="images/color.png" alt="Color Chart" width=200 height=200>
+<font size = 2>The handy chart on the left illustrates how each color value is converted to a color.  The chart to the right shows all the colors from the first chart broken into their red, green and blue components.</font>
+</td>
+</tr>
+</table>
+</body>
+</HTML>
