@@ -1,6 +1,11 @@
-/* Plasma.java								*
- * Written by Justin Seyster and released into public domain.		*
- * Generates a "plasma fractal" using random midpoint displacement.	*/
+/* Simple plasma fractal implementation. 
+ *
+ * Justin Seyster, 2002
+ *
+ * Permission is granted by the author to use the source code provided
+ * in this file for any purpose, on its own or as part of a derivative
+ * work, and with no restrictions.  Enjoy!
+ */
 
 import java.applet.Applet;
 import java.awt.*;
