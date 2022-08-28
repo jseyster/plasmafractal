@@ -15,7 +15,7 @@ I finally figured it out while I was a student in college, and I was
 so excited that I posted a web site with my explanation of how it
 works.  That page is still available at:
 
-http://jseyster.github.com/plasmafractal/
+http://jseyster.github.io/plasmafractal/
 
 The easiest way to try the applet is to go the above web site.  If you
 want to compile the applet yourself, use:
