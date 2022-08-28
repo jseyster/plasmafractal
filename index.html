@@ -3,67 +3,167 @@
 <head><title>Plasma Fractal</title>
 
 <style>
-	plasma-fractal {
-		width: 512px;
-		height: 512px;
-		margin: 0px auto 0px auto;
-	}
+    plasma-fractal {
+        width: 512px;
+        height: 512px;
+        margin: 0px auto 0px auto;
+    }
 
-	a:link, a:visited {
-		text-decoration: none;
-	}
+    a:link, a:visited {
+        text-decoration: none;
+    }
 
-	a:hover {
-		color: red;
-	}
+    a:hover {
+        color: red;
+    }
 
-	div.centered {
-		text-align: center;
-	}
+    div.centered {
+        text-align: center;
+    }
 
-	div.banner {
-		background-color: #999999;
+    div.banner {
+        background-color: #999999;
 
-		width: 600px;
-		margin: 10px auto 0px auto;
-		padding: 5px 10px;
+        width: 600px;
+        margin: 10px auto 0px auto;
+        padding: 5px 10px;
 
-		text-align: left;
+        text-align: left;
 
-		border-radius: 2px;
-		box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-	}
+        border-radius: 2px;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    }
 
-	h3.banner-heading {
-		font-family: sans-serif;
-		margin: 0px 0px 5px 0px;
-	}
+    h3.banner-heading {
+        font-family: sans-serif;
+        margin: 0px 0px 5px 0px;
+    }
 
-	div.button {
-		width: 100px;
-		margin: 0px auto 0px auto;
-	}
+    div.button {
+        width: 100px;
+        margin: 0px auto 0px auto;
+    }
 
-	div.right-aligned {
-		text-align: right;
-	}
+    div.right-aligned {
+        text-align: right;
+    }
 
-	span.caption {
-		font-size: small;
-	}
+    span.caption {
+        font-size: small;
+    }
 
-	table.layout {
-		border-spacing: 15px;
-	}
+    table.layout {
+        border-spacing: 15px;
+    }
 
-	td.main {
-		width: 500px;
-	}
+    td.main {
+        width: 500px;
+    }
 
-	td.sidebar {
-		width: 200px;
-		vertical-align: top;
-	}
+    td.sidebar {
+        width: 200px;
+        vertical-align: top;
+    }
+
+    div.button-holder {
+        display: flex;
+        position: relative;
+        justify-content: center;
+
+        margin: 5px;
+    }
+
+    div.snippet {
+        width: 500px;
+        background-color: #ffffff;
+
+        padding: 20px;
+
+        overflow-x: scroll;
+        white-space: nowrap;
+
+        font-family: monospace;
+    }
+
+    div.snippet-close {
+        position: absolute;
+        border-radius: 50%;
+        text-align: center;
+        font-size: xx-small;
+
+        cursor: pointer;
+
+        right: 30px;
+        top: 2px;
+        width: 15px;
+        height: 15px;
+
+        background-color: #6200ee;
+        box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
+        color: #ffffff
+    }
+
+    div.collapsed {
+        display: none;
+    }
+
+    .decorative-button {
+        align-items: center;
+        appearance: none;
+        border-radius: 4px;
+        border-style: none;
+        box-shadow: rgba(0, 0, 0, .2) 0 3px 1px -2px,rgba(0, 0, 0, .14) 0 2px 2px 0,rgba(0, 0, 0, .12) 0 1px 5px 0;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-flex;
+        font-family: Roboto,sans-serif;
+        font-size: .875rem;
+        font-weight: 500;
+        height: 36px;
+        justify-content: center;
+        letter-spacing: .0892857em;
+        line-height: normal;
+        min-width: 64px;
+        outline: none;
+        overflow: visible;
+        padding: 0 16px;
+        position: relative;
+        text-align: center;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1);
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+        vertical-align: middle;
+        will-change: transform,opacity;
+    }
+
+    .decorative-button:hover {
+          box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+    }
+
+    .decorative-button:disabled {
+          background-color: rgba(0, 0, 0, .12);
+          box-shadow: rgba(0, 0, 0, .2) 0 0 0 0, rgba(0, 0, 0, .14) 0 0 0 0, rgba(0, 0, 0, .12) 0 0 0 0;
+          color: rgba(0, 0, 0, .37);
+          cursor: default;
+          pointer-events: none;
+    }
+
+    .decorative-button:not(:disabled) {
+          background-color: #6200ee;
+    }
+
+    .decorative-button:focus {
+          box-shadow: rgba(0, 0, 0, .2) 0 2px 4px -1px, rgba(0, 0, 0, .14) 0 4px 5px 0, rgba(0, 0, 0, .12) 0 1px 10px 0;
+    }
+
+    .decorative-button:active {
+          box-shadow: rgba(0, 0, 0, .2) 0 5px 5px -3px, rgba(0, 0, 0, .14) 0 8px 10px 1px, rgba(0, 0, 0, .12) 0 3px 14px 2px;
+          background: #A46BF5;
+    }
 </style>
 
 <script type="module" src="./plasma-js/plasma-legacy.esm.js"></script>
@@ -81,6 +181,14 @@
 <div class="banner">
 <h3 class="banner-heading">Update: August 2022</h3>
 The original Java applet has been replaced with a JavaScript implementation that should work almost anywhere. Just like the applet, you can embed this JavaScript in your web page.
+<div id="embed-button-holder" class="button-holder"><button id="embed-button" class="decorative-button" data-action="disclosure" aria-controls="embed-snippet" aria-expanded="false">Embed</button></div>
+<div id="embed-snippet" class="button-holder collapsed">
+<div role="button" class="snippet-close" data-forward-click="embed-button">&#x25B2;</div>
+<div class="snippet">
+&lt;script type="module" src="https://cdn.jsdelivr.net/gh/jseyster/plasmafractal@master/plasma-js/plasma-legacy.esm.min.js"&gt;&lt;/script&gt;
+<br>&lt;plasma-fractal style="width: 512px; height: 512px;"&gt;&lt;/plasma-fractal&gt;
+</div></div>
+See the <a href="https://github.com/jseyster/plasmafractal/tree/master/plasma-js/README.md">README</a> for notes about embedding.
 </div>
 </div>
 </td></tr>
@@ -128,5 +236,41 @@ The original Java applet has been replaced with a JavaScript implementation that
 </td>
 </tr>
 </table>
+<script>
+(function() {
+function disclosureHandler(event) {
+    const button = event.target;
+
+    const disclosed = !("true" === button.getAttribute("aria-expanded"));
+    button.setAttribute("aria-expanded", disclosed ? "true" : "false");
+
+    const collapsible = document.getElementById(button.getAttribute("aria-controls"));
+    if (disclosed) {
+        collapsible.classList.remove("collapsed");
+    } else {
+        collapsible.classList.add("collapsed");
+    }
+}
+
+for (let button of document.querySelectorAll("button[data-action='disclosure']")) {
+    button.addEventListener("click", disclosureHandler);
+}
+
+for (let button of document.querySelectorAll("*[data-forward-click]")) {
+    const target = document.getElementById(button.dataset.forwardClick);
+    button.addEventListener("click", () => {
+        target.click();
+    });
+}
+
+document.querySelector("button[aria-controls='embed-snippet']").addEventListener("click", () => {
+    document.getElementById("embed-button-holder").classList.add("collapsed");
+});
+
+document.querySelector("*[data-forward-click='embed-button']").addEventListener("click", () => {
+    document.getElementById("embed-button-holder").classList.remove("collapsed");
+});
+}());
+</script>
 </body>
 </html>
