@@ -3,6 +3,12 @@
 <head><title>Plasma Fractal</title>
 
 <style>
+	plasma-fractal {
+		width: 512px;
+		height: 512px;
+		margin: 0px auto 0px auto;
+	}
+
 	a:link, a:visited {
 		text-decoration: none;
 	}
@@ -13,6 +19,29 @@
 
 	div.centered {
 		text-align: center;
+	}
+
+	div.banner {
+		background-color: #999999;
+
+		width: 600px;
+		margin: 10px auto 0px auto;
+		padding: 5px 10px;
+
+		text-align: left;
+
+		border-radius: 2px;
+		box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+	}
+
+	h3.banner-heading {
+		font-family: sans-serif;
+		margin: 0px 0px 5px 0px;
+	}
+
+	div.button {
+		width: 100px;
+		margin: 0px auto 0px auto;
 	}
 
 	div.right-aligned {
@@ -37,6 +66,8 @@
 	}
 </style>
 
+<script type="module" src="./plasma-js/plasma-legacy.esm.js"></script>
+
 </head>
 <body>
 <table class="layout">
@@ -44,9 +75,13 @@
 <div class="right-aligned"><a href="https://github.com/jseyster/plasmafractal"><span class="caption">GitHub Project</span></a></div>
 <div class="centered">
 <h2>Plasma Fractal</h2>
-<applet codebase="." code="Plasma.class" width=500 height=500></applet>
+<plasma-fractal></plasma-fractal>
 <br><span class="caption">You can download the applet <a href="Plasma.class">here</a>
 <br>You can also view the <a href="https://github.com/jseyster/plasmafractal/blob/master/Plasma.java">source</a> for this applet</span>
+<div class="banner">
+<h3 class="banner-heading">Update: August 2022</h3>
+The original Java applet has been replaced with a JavaScript implementation that should work almost anywhere. Just like the applet, you can embed this JavaScript in your web page.
+</div>
 </div>
 </td></tr>
 <tr><td class="main">
