@@ -22,9 +22,15 @@ algorithm at speeds comparable to the original Java program running on a Pentium
 Embedding
 ---------
 
-This new version is a Web Component that can easily be embedded on any site:
+This new version is a Web Component that can be embedded on any site:
 
     <script type="module" src="https://cdn.jsdelivr.net/gh/jseyster/plasmafractal@master/plasma-js/plasma-legacy.esm.min.js"></script>
     <plasma-fractal style="width: 512px; height: 512px;"></plasma-fractal>
 
-Alternatively, you can host your own copy of the `.js` files in this directory.
+Note that embedding a cross-domain script with a Web Worker (including this one) requires hacks that
+will not work in every environment. Currently, Firefox cannot embed this script using the above URL.
+There is a good chance that future updates will break compatibility with other browsers, as well.
+
+For the best possible compatibility across platforms, you can host your own copy of the `.js` files
+in this directory. Perhaps having your own copy of the source will inspire you to tinker with it as
+well!
